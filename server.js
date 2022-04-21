@@ -10,7 +10,7 @@ const apiRoutes = require('');
 const htmlRoutes = require('');
 
 
-// On launch of this server file, the html containing the intro page will  open on default browser
+// On launch of this server file, the page can be viewed by visiting localhost:3001
 
 app.use
 app.use
