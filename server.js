@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require ('fs');
 
 // set up server port to run the server
 const PORT = process.env.PORT || 3001;
