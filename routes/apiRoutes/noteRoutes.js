@@ -1,25 +1,25 @@
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
-// Write out the rest of the dependencies of the noteRoutes JS to allow the creation of new notes
-const { filterByQuery, createNewNote, } = require('../../lib/notes');
-const { notes } = require('../../data/db');
+// // Write out the rest of the dependencies of the noteRoutes JS to allow the creation of new notes
+// const { filterByQuery, createNewNote, } = require('../../lib/notes');
+// const { notes } = require('../../data/db');
 
-app.post("/notes", (req, res) => {
+// app.post("/notes", (req, res) => {
 
-    req.body.id = notes.length.toString();
+//     req.body.id = notes.length.toString();
 
-    if (!validateNote(req.body)) {
+//     if (!validateNote(req.body)) {
 
-        res.status(400).send("The note is not properly formatted.");
+//         res.status(400).send("The note is not properly formatted.");
 
-    } else {
+//     } else {
 
-        const note = createNewNote(req.body, notes);
+//         const note = createNewNote(req.body, notes);
 
-        res.json(note);
-    }
-});
+//         res.json(note);
+//     }
+// });
 
 
-module.exports = createNewNote;
+// module.exports = createNewNote;

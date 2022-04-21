@@ -1,16 +1,16 @@
-const path = require('path');
-const express = require('express');
+// const path = require('path');
+// const express = require('express');
 
 
-// GET /notes should return the notes.html file
-//app.get notes.html
+// // GET /notes should return the notes.html file
+// //app.get notes.html
 
-// GET * should return the notes.html file
-//app.get index.html
-
-
-
+// // GET * should return the notes.html file
+// //app.get index.html
 
 
 
-module.exports = router;
+
+
+
+// module.exports = router;
