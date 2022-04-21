@@ -1,9 +1,13 @@
 const path = require('path');
-const router = require('express').Router();
+const express = require('express');
 
-//router.get index.html
 
-//router.get notes.html
+// GET /notes should return the notes.html file
+//app.get notes.html
+
+// GET * should return the notes.html file
+//app.get index.html
+
 
 
 
