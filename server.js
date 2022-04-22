@@ -1,5 +1,7 @@
 // set up server to run the default heroku port, or local 3001 (for when launching locally during testing)
 // On launch of this server file, the page can be viewed by visiting localhost:3001
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -38,19 +40,31 @@ app.get('/api/notes', (req, res) => {
 });
 
 function createNewNote(body, notesArray) {
-    console.log(body);
 
-    return body;
+    const note = body;
+    notesArray.push(note);
+
+    fs.writeFileSync(
+
+        path.join(__dirname, './data/db.json'),
+
+        // method to format the new data, null means we don't want to change existing data, the 2 creates white space between what exists, and what we add to make the code more readable
+        JSON.stringify({ notes: notesArray }, null, 2)
+    );
+    // console.log(body);
+
+    return note;
 
 }
 
 app.post('/api/notes', (req, res) => {
 
-    // req.body is where the input will be
+    req.body.id = notes.length.toString();
 
-    console.log(req.body);
+    // Add not to existing json file
+    const note = createNewNote(req.body, notes);
 
-    res.json(req.body);
+    res.json(note);
 });
 
 
