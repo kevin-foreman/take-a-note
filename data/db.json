@@ -2,38 +2,33 @@
 "notes": [
 
     {
-        "title":"Test Title",
-        "text":"Test text"
-    },
-
-    {
         "title":"Go to the doctor",
-        "text":"Doctor's appointment at the clinic"
+        "text":"Doctor's appointment at the clinic",
+        "id":1
     },
 
     {
         "title":"Get groceries",
-        "text":"Go to the HEB to get moar food"
+        "text":"Go to the HEB to get moar food",
+        "id":2
     },
 
     {
         "title":"Get gas",
-        "text":"Fill up the truck before gas prices go up more"
+        "text":"Fill up the truck before gas prices go up more",
+        "id":3
     },
 
     {
         "title":"Call Bank on Friday",
-        "text":"Need to discuss the possibility of taking a small business loan"
-    },
-
-    {
-        "title":"Check in with clients",
-        "text":"The last two cusomers weren't happy with the price hike due to supply shortages"
+        "text":"Need to discuss the possibility of taking a small business loan",
+        "id":4
     },
 
     {
         "title":"Finish payroll",
-        "text":"Of course I mean pay myself, becuase I'm self-employed"
+        "text":"Of course I mean pay myself, becuase I'm self-employed",
+        "id":5
     }
 ]
 }
