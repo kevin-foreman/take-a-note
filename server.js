@@ -3,9 +3,11 @@ const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const { notes } = require('./data/db');
-const { randomUUID } = require('crypto');
 
-console.log(randomUUID());
+
+// const { randomUUID } = require('crypto');
+// testing for unique id for each note
+// console.log(randomUUID());
 
 // moved this dependency to index.js
 // const fs = require ('fs');
