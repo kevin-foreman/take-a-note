@@ -2,7 +2,10 @@
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const { notes } = require('./data/notes');
+const { notes } = require('./data/db');
+const { randomUUID } = require('crypto');
+
+console.log(randomUUID());
 
 // moved this dependency to index.js
 // const fs = require ('fs');
@@ -24,6 +27,7 @@ const { notes } = require('./data/notes');
 
 
 
+
 app.get('/api/notes', (req, res) => {
 
     res.json(notes);
@@ -32,6 +36,6 @@ app.get('/api/notes', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server now on port ${PORT}, visit localhost:3001 on your browser to see the application`)
+    console.log(`Server now on port ${PORT}, visit localhost:3001 on your browser to see the application at work`)
 })
 
