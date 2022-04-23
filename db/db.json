@@ -1,23 +1,7 @@
-[
-    {
-        "title":"Go to the bank",
-        "text":"Get the money"
-    },
-    {
-        "title":"Pay rent",
-        "text":"Lose the money"
-    },
-    {
-        "title":"Go to work",
-        "text":"Make the money"
-    },
-    {
-        "title":"Son needs new shoes for track",
-        "text":"Spend the money"
-    },
-    {
-        "title":"How to test",
-        "text":"Testing testing..."
-    }
-
-]
+{
+  "newNote": {
+    "title": "asdf",
+    "text": "asdf",
+    "id": "7078c483-4e48-480f-a331-4d40e4a130b6"
+  }
+}

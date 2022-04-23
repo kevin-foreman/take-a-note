@@ -28,25 +28,25 @@ app.get('/api/notes', (req, res) => {
 
 });
 
-function createNewNote(body, notesArray) {
+// function createNewNote(body, notesArray) {
 
-    const note = body;
-    notesArray.push(note);
+//     const note = body;
+//     notesArray.push(note);
 
-    fs.writeFileSync(
+//     fs.writeFileSync(
 
-        path.join(__dirname, './db/db.json'),
+//         path.join(__dirname, './db/db.json'),
 
-        // method to format the new data, null means we don't want to change existing data, the 2 creates white space between what exists, and what we add to make the code more readable
-        JSON.stringify({ notes: notesArray }, null, 2)
-    );
-    // console.log(body);
+//         // method to format the new data, null means we don't want to change existing data, the 2 creates white space between what exists, and what we add to make the code more readable
+//         JSON.stringify({ notes: notesArray }, null, 2)
+//     );
+//     // console.log(body);
 
-    return note;
+//     return note;
 
-};
-
+// };
 // createNewNote();
+
 
 // simple data check validation basically meant to ensure a user does not add a blank note, or a note with a title with no text and vice versa
 function validateNote(note) {
@@ -71,7 +71,7 @@ app.post('/api/notes', (req, res) => {
 
         res.status(400).send('The note is not properly formatted.');
 
-    } else {   
+    } else {
     
         
     // Add note to existing json file
@@ -83,27 +83,32 @@ app.post('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if(err) throw err;
         let newTask = JSON.parse(data);
+        // const newNote = req.body;
         newTask.push(newNote);
 
-        fs.writeFile('./db/db.json', JSON.stringify({ newTask }, null, 2), (err)  => {
-
-            path.join(__dirname, './db/db.json'),
-    
-            // method to format the new data, null means we don't want to change existing data
-            // The 2 creates white space between what exists, and what we add to make the code more readable
-            // JSON.stringify({ newNote }, null, 2)
-    
-
-
-
-    
-
-    
-
-
-    res.json(newNote);
+    fs.writeFile('./db/db.json', JSON.stringify({ newTask }, null, 2), (err) => {
+        if (err) throw err;
     });
+
+    });
+
+    // fs.writeFileSync('./db/db.json', JSON.stringify({ newNote }, null, 2), err  => {
+
+       //  if (err) throw err;
+
+        // path.join(__dirname, './db/db.json'),
+
+        // method to format the new data, null means we don't want to change existing data
+        // The 2 creates white space between what exists, and what we add to make the code more readable
+        // JSON.stringify({ newTask }, null, 2)
+
+    // res.json(newTask);
+    // });
+    };
 });
+
+
+
 
 
 
