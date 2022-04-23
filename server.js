@@ -5,7 +5,7 @@ const path = require('path');
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
-// const { notes } = require('./db/db.json');
+const { notes } = require('./db/db');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -20,7 +20,11 @@ app.use(express.static('public'));
 
 app.get('/api/notes', (req, res) => {
 
+    let results = notes;
+
     res.sendFile(path.join(__dirname, './db/db.json'));
+
+    res.json(results);
 
 });
 
@@ -85,7 +89,7 @@ app.post('/api/notes', (req, res) => {
         // The 2 creates white space between what exists, and what we add to make the code more readable
         // JSON.stringify({ newTask }, null, 2)
 
-    res.json(res.body);
+    res.json(notes);
     // });
     };
 });
