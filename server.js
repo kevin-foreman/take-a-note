@@ -63,8 +63,6 @@ function validateNote(note) {
 
 app.post('/api/notes', (req, res) => {
 
-    // req.body.id = uuid;
-
     if (!validateNote(req.body)) {
 
         res.status(400).send('The note is not properly formatted.');
