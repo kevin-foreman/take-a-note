@@ -44,7 +44,9 @@ function createNewNote(body, notesArray) {
 
     return note;
 
-}
+};
+
+// createNewNote();
 
 // simple data check validation basically meant to ensure a user does not add a blank note, or a note with a title with no text and vice versa
 function validateNote(note) {
@@ -54,13 +56,14 @@ function validateNote(note) {
         return false;
     }
 
-    if (!note.text || typeof note.text !== 'string') {
+    else if (!note.text || typeof note.text !== 'string') {
 
         return false;
-    }
+    } else {
 
     return true;
-}
+    }
+};
 
 app.post('/api/notes', (req, res) => {
 
@@ -80,12 +83,26 @@ app.post('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if(err) throw err;
         let newTask = JSON.parse(data);
-        newTask.push(newNote)
-    });
+        newTask.push(newNote);
+
+        fs.writeFile('./db/db.json', JSON.stringify({ newTask }, null, 2), (err)  => {
+
+            path.join(__dirname, './db/db.json'),
+    
+            // method to format the new data, null means we don't want to change existing data
+            // The 2 creates white space between what exists, and what we add to make the code more readable
+            // JSON.stringify({ newNote }, null, 2)
+    
+
+
+
+    
+
+    
 
 
     res.json(newNote);
-    };
+    });
 });
 
 
@@ -105,5 +122,4 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server now on port ${PORT}, visit localhost:3001 on your browser to see the application at work`)
-})
-
+});
