@@ -5,7 +5,7 @@ const path = require('path');
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const { notes } = require('./data/db');
+// const { notes } = require('./db/db.json');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -23,7 +23,7 @@ app.use(express.static('public'));
 
 app.get('/api/notes', (req, res) => {
 
-    res.sendFile(path.join(__dirname, './data/db.json'));
+    res.sendFile(path.join(__dirname, './db/db.json'));
 
 
 });
@@ -35,7 +35,7 @@ function createNewNote(body, notesArray) {
 
     fs.writeFileSync(
 
-        path.join(__dirname, './data/db.json'),
+        path.join(__dirname, './db/db.json'),
 
         // method to format the new data, null means we don't want to change existing data, the 2 creates white space between what exists, and what we add to make the code more readable
         JSON.stringify({ notes: notesArray }, null, 2)
@@ -70,13 +70,22 @@ app.post('/api/notes', (req, res) => {
 
     } else {   
     
-    // Add not to existing json file
-    const note = createNewNote(req.body, notes);
+        
+    // Add note to existing json file
+    // assign a random id using uuid
+    const newNote = req.body;
     const noteId = uuidv4();
-    note.id = noteId;
+    newNote.id = noteId;
 
-    res.json(note);
-    }
+    fs.readFile('./db/db.json', (err, data) => {
+        if(err) throw err;
+        let newTask = JSON.parse(data);
+        newTask.push(newNote)
+    });
+
+
+    res.json(newNote);
+    };
 });
 
 
