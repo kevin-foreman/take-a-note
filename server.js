@@ -23,7 +23,8 @@ app.use(express.static('public'));
 
 app.get('/api/notes', (req, res) => {
 
-    res.json(notes);
+    res.sendFile(path.join(__dirname, './data/db.json'));
+
 
 });
 
@@ -78,15 +79,17 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
 
-    res.sendFile(path.join(__dirname, './public/index.html'));
+
+app.get('/notes', (req, res) => {
+
+    res.sendFile(path.join(__dirname, './public/notes.html'));
 
 });
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
 
-    res.sendFile(path.join(__dirname, './public/notes.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 
 });
 

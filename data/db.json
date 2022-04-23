@@ -27,32 +27,7 @@
     },
     {
       "title": "New note",
-      "text": "We added a new note!",
-      "id": "5"
-    },
-    {
-      "title": "Newer Note",
-      "text": "Testing UUID",
-      "id": "6"
-    },
-    {
-      "title": "Newerest Note",
-      "text": "Testing UUID"
-    },
-    {
-      "title": "Newerestest-est Note",
-      "text": "Testing UUID",
-      "id": {
-        "NIL": "00000000-0000-0000-0000-000000000000"
-      }
-    },
-    {
-      "text": "new with v4",
-      "title": "does it work?"
-    },
-    {
-      "text": "new with v4",
-      "title": "does it work?"
+      "text": "New note test"
     }
   ]
 }
