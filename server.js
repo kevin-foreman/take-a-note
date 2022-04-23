@@ -17,35 +17,12 @@ app.use(express.urlencoded(({ extended: true })));
 app.use(express.json());
 app.use(express.static('public'));
 
-// app.use('/api', apiRoutes);
-// app.use('/', htmlRoutes);
-
 
 app.get('/api/notes', (req, res) => {
 
     res.sendFile(path.join(__dirname, './db/db.json'));
 
-
 });
-
-// function createNewNote(body, notesArray) {
-
-//     const note = body;
-//     notesArray.push(note);
-
-//     fs.writeFileSync(
-
-//         path.join(__dirname, './db/db.json'),
-
-//         // method to format the new data, null means we don't want to change existing data, the 2 creates white space between what exists, and what we add to make the code more readable
-//         JSON.stringify({ notes: notesArray }, null, 2)
-//     );
-//     // console.log(body);
-
-//     return note;
-
-// };
-// createNewNote();
 
 
 // simple data check validation basically meant to ensure a user does not add a blank note, or a note with a title with no text and vice versa
@@ -65,6 +42,11 @@ function validateNote(note) {
     }
 };
 
+    // Add note to existing json file
+    // assign a random id using uuid
+ 
+    const noteId = uuidv4();
+
 app.post('/api/notes', (req, res) => {
 
     if (!validateNote(req.body)) {
@@ -73,24 +55,25 @@ app.post('/api/notes', (req, res) => {
 
     } else {
     
-        
-    // Add note to existing json file
-    // assign a random id using uuid
-    const newNote = req.body;
-    const noteId = uuidv4();
-    newNote.id = noteId;
 
     fs.readFile('./db/db.json', (err, data) => {
         if(err) throw err;
+        const newNote = req.body;
+        newNote.id = noteId;
         let newTask = JSON.parse(data);
-        // const newNote = req.body;
         newTask.push(newNote);
+        
 
-    fs.writeFile('./db/db.json', JSON.stringify({ newTask }, null, 2), (err) => {
+    fs.writeFile('./db/db.json', JSON.stringify(newTask), (err) => {
         if (err) throw err;
     });
 
     });
+
+        const newNote = req.body;
+        // const noteId = uuidv4();
+        newNote.id = noteId;
+        
 
     // fs.writeFileSync('./db/db.json', JSON.stringify({ newNote }, null, 2), err  => {
 
@@ -102,7 +85,7 @@ app.post('/api/notes', (req, res) => {
         // The 2 creates white space between what exists, and what we add to make the code more readable
         // JSON.stringify({ newTask }, null, 2)
 
-    // res.json(newTask);
+    res.json(res.body);
     // });
     };
 });

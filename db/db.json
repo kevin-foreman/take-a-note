@@ -1,7 +1,15 @@
-{
-  "newNote": {
-    "title": "asdf",
-    "text": "asdf",
-    "id": "7078c483-4e48-480f-a331-4d40e4a130b6"
+[
+  { "title": "test 1", "text": "test 1 also, but longer" },
+  { "title": "test 2", "text": "test 2 also, but longer" },
+  { "title": "test 3", "text": "test 3 also, but longer" },
+  {
+    "title": "testing again",
+    "text": "test textinginging",
+    "id": "680a16a6-95a1-40db-83f4-3c9b2e6e2525"
+  },
+  {
+    "title": "testing one more time",
+    "text": "test textinginging",
+    "id": "680a16a6-95a1-40db-83f4-3c9b2e6e2525"
   }
-}
+]
