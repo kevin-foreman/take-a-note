@@ -21,7 +21,7 @@ const { notes } = require('./data/db');
 
 
 // Some express black magic middleware here...
-// the first method is built into express.js, takes incoming POST data and converst to key/value pairs
+// the first method is built into express.js, takes incoming POST data and converts to key/value pairs
 // the 'extended: true' tells express there may be sub-array nested data, so look as deep as you can to parse everything correctly
 app.use(express.urlencoded(({ extended: true })));
 app.use(express.json());
@@ -55,6 +55,22 @@ function createNewNote(body, notesArray) {
 
     return note;
 
+}
+
+// simple data check validation basically meant to ensure a user does not add a blank note, or a note with a title with no text and vice versa
+function validateNote(note) {
+
+    if (!note.title || typeof note.title !== 'string') {
+
+        return false;
+    }
+
+    if (!note.text || typeof note.text !== 'string') {
+
+        return false;
+    }
+
+    return true;
 }
 
 app.post('/api/notes', (req, res) => {
