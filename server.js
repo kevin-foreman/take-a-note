@@ -6,17 +6,7 @@ const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const { notes } = require('./data/db');
-
-
-// const { randomUUID } = require('crypto');
-// testing for unique id for each note
-// console.log(randomUUID());
-
-
-
-
-// determine the path for the routes
-
+const { v4: uuidv4 } = require('uuid');
 
 
 
@@ -25,12 +15,10 @@ const { notes } = require('./data/db');
 // the 'extended: true' tells express there may be sub-array nested data, so look as deep as you can to parse everything correctly
 app.use(express.urlencoded(({ extended: true })));
 app.use(express.json());
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 // app.use('/api', apiRoutes);
 // app.use('/', htmlRoutes);
-
-
 
 
 app.get('/api/notes', (req, res) => {
@@ -75,7 +63,7 @@ function validateNote(note) {
 
 app.post('/api/notes', (req, res) => {
 
-    req.body.id = notes.length.toString();
+    // req.body.id = uuid;
 
     if (!validateNote(req.body)) {
 
@@ -85,9 +73,23 @@ app.post('/api/notes', (req, res) => {
     
     // Add not to existing json file
     const note = createNewNote(req.body, notes);
+    const noteId = uuidv4();
+    note.id = noteId;
 
     res.json(note);
     }
+});
+
+app.get('/', (req, res) => {
+
+    res.sendFile(path.join(__dirname, './public/index.html'));
+
+});
+
+app.get('/', (req, res) => {
+
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+
 });
 
 

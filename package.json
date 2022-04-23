@@ -19,8 +19,8 @@
   "homepage": "https://github.com/kevin-foreman/take-a-note#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "node": "^17.7.2"
+    "node": "^17.7.2",
+    "uuid": "^8.3.2"
   },
-  "devDependencies": {},
   "keywords": []
 }
