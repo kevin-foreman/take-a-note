@@ -15,5 +15,10 @@
   {
     "title": "Client lunch on Thursday",
     "text": "Dont forget to book the caterer"
+  },
+  {
+    "title": "Add a note",
+    "text": "Final test note with built int notes checkng",
+    "id": "b10f23aa-b683-413f-9541-74d366e8f7a5"
   }
 ]
