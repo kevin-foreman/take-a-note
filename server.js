@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
+// Get existing notes, if any, and present to the user on the html
 app.get('/api/notes', (req, res) => {
 
     let results = notes;
@@ -42,11 +43,12 @@ function validateNote(note) {
     }
 };
 
-    // Add note to existing json file
-    // assign a random id using uuid
+// assign a random id using uuid
+// admittedly, the random id assigned using this npm pacakage assigns a REALLY long id...
+// going through the documentation from UUID would probably yield a way to trim that id down
+const noteId = uuidv4();
 
-    const noteId = uuidv4();
-
+ // Add note to existing json file
 app.post('/api/notes', (req, res) => {
 
     if (!validateNote(req.body)) {
@@ -71,33 +73,28 @@ app.post('/api/notes', (req, res) => {
     });
 
         const newNote = req.body;
-        // const noteId = uuidv4();
         newNote.id = noteId;
-        
 
     res.json(notes);
-    // });
     };
 });
 
-
-
-
-
-
+// Route to return the notes.html page
 app.get('/notes', (req, res) => {
 
     res.sendFile(path.join(__dirname, './public/notes.html'));
 
 });
 
+// Route to return the index.html and use a boolean * so it returns the user to this page if they call for something that doesn't exist
 app.get('*', (req, res) => {
 
     res.sendFile(path.join(__dirname, './public/index.html'));
 
 });
 
-
+// set up the local server to listen for the port
+// Note: the port depends on the 
 app.listen(PORT, () => {
     console.log(`Server now on port ${PORT}, visit localhost:3001 on your browser to see the application at work`)
 });
