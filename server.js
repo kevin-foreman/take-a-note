@@ -8,8 +8,6 @@ const app = express();
 const { notes } = require('./db/db');
 const { v4: uuidv4 } = require('uuid');
 
-
-
 // Some express black magic middleware here...
 // the first method is built into express.js, takes incoming POST data and converts to key/value pairs
 // the 'extended: true' tells express there may be sub-array nested data, so look as deep as you can to parse everything correctly
@@ -46,7 +44,7 @@ function validateNote(note) {
 
     // Add note to existing json file
     // assign a random id using uuid
- 
+
     const noteId = uuidv4();
 
 app.post('/api/notes', (req, res) => {
@@ -76,16 +74,6 @@ app.post('/api/notes', (req, res) => {
         // const noteId = uuidv4();
         newNote.id = noteId;
         
-
-    // fs.writeFileSync('./db/db.json', JSON.stringify({ newNote }, null, 2), err  => {
-
-       //  if (err) throw err;
-
-        // path.join(__dirname, './db/db.json'),
-
-        // method to format the new data, null means we don't want to change existing data
-        // The 2 creates white space between what exists, and what we add to make the code more readable
-        // JSON.stringify({ newTask }, null, 2)
 
     res.json(notes);
     // });
