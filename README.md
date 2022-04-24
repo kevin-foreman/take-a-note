@@ -36,3 +36,6 @@ kevin.o.foreman2@gmail // (github) kevin-foreman
 
 The license used for this project is MIT
 
+Screenshot of the initial landing page
+![alt text](assets/images/note-taker-screenshot.png)
+
