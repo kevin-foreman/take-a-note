@@ -20,7 +20,7 @@ Simple application for making notes to keep track of activity
 Third party dependencies include Express.js, and UUID. Use npm init -y first. Then install express by using "npm i express." Install UUID by using "npm i uuid."
 
 ## Usage
-Follow the installation instructions above, but don't forget to use "npm init -y" from the command line prior to usage. This application could be used by anyone who wants to keep track of tasks using simple notes.
+Follow the installation instructions above, but don't forget to use "npm init -y" from the command line prior to usage. This application could be used by anyone who wants to keep track of tasks using simple notes. Application deployed to heroku @ 
 
 ## Contributors
 None
